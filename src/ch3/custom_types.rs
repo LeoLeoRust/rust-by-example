@@ -1,4 +1,4 @@
-mod structures {
+pub mod structures {
     #[derive(Debug)]
     //The 'a defines a lifetime
     struct Person<'a> {
@@ -73,5 +73,88 @@ mod structures {
         let Pair(integer, decimal) = pair;
 
         println!("pair contains {:?} and {:?}", integer, decimal);
+    }
+}
+
+pub mod enums {
+    #[derive(Debug)]
+    enum WebEvent {
+        PageLoad,
+        PageUnload,
+        KeyPress(char),
+        Paste(String),
+        Click { x: i64, y: i64 },
+    }
+
+    fn inspect(event: WebEvent) {
+        match event {
+            WebEvent::PageLoad => println!("page loaded!"),
+            WebEvent::PageUnload => println!("page unloaded!"),
+            WebEvent::KeyPress(c) => println!("pressed: {}.", c),
+            WebEvent::Paste(s) => println!("pasted \"{}\".", s),
+            WebEvent::Click { x, y } => {
+                println!("clicked at x: {}, y:{}", x, y);
+            }
+        }
+    }
+
+    pub fn test_enum() {
+        let pressed = WebEvent::KeyPress('x');
+        // `to_owned()` creates an owned `String` from a string slice.
+        let pasted = WebEvent::Paste("my text".to_owned());
+        let click = WebEvent::Click { x: 20, y: 80 };
+        let load = WebEvent::PageLoad;
+        let unload = WebEvent::PageUnload;
+
+        inspect(pressed);
+        inspect(pasted);
+        inspect(click);
+        inspect(load);
+        inspect(unload);
+    }
+
+    pub enum List {
+        Cons(u32, Box<List>),
+        Nil,
+    }
+
+    pub use List::*;
+
+    impl List {
+        // add code here
+        fn new() -> List {
+            Nil
+        }
+
+        fn prepend(self, elem: u32) -> List {
+            Cons(elem, Box::new(self))
+        }
+
+        fn len(&self) -> u32 {
+            match *self {
+                Cons(_, ref tail) => 1 + tail.len(),
+                Nil => 0,
+            }
+        }
+
+        fn stringify(&self) -> String {
+            match *self {
+                Cons(head, ref tail) => format!("{}, {}", head, tail.stringify()),
+                Nil => format!("Nil"),
+            }
+        }
+    }
+
+    pub fn test_list() {
+        let mut list = List::new();
+
+        // Prepend some elements
+        list = list.prepend(1);
+        list = list.prepend(2);
+        list = list.prepend(3);
+
+        // Show the final state of the list
+        println!("linked list has length: {}", list.len());
+        println!("{}", list.stringify());
     }
 }

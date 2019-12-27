@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 pub mod ch1 {
     pub mod hello_world;
 }
@@ -17,5 +19,6 @@ fn main() {
     // ch2::primitives::literals();
     // ch2::primitives::tuples();
     // ch2::primitives::array_slice();
-    ch3::custom_types::struc();
+    // ch3::custom_types::enums::test_enum();
+    ch3::custom_types::enums::test_list();
 }
