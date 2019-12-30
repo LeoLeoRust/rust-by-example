@@ -28,6 +28,10 @@ pub mod ch8 {
     pub mod flow_of_control;
 }
 
+pub mod ch9 {
+    pub mod functions;
+}
+
 fn main() {
     // println!("Hello, world!");
     // ch1::hello_world::display();
@@ -40,5 +44,6 @@ fn main() {
     // ch4::variable_bindings::scope_shadowing();
     // ch5::types::test_casting();
     // ch6::conversion::test_conver();
-    ch8::flow_of_control::test_foc();
+    // ch8::flow_of_control::test_foc();
+    ch9::functions::test_funcs();
 }
