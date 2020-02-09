@@ -43,9 +43,6 @@ fn main() {
     // ch2::primitives::literals();
     // ch2::primitives::tuples();
     // ch2::primitives::array_slice();
-<<<<<<< HEAD
-    ch3::custom_types::structures::struc_test();
-=======
     // ch3::custom_types::enums::test_enum();
     // ch3::custom_types::enums::test_list();
     // ch4::variable_bindings::scope_shadowing();
@@ -54,5 +51,4 @@ fn main() {
     // ch8::flow_of_control::test_foc();
     // ch9::functions::test_funcs();
     ch14::generics::functions::test_fib();
->>>>>>> 19702fd3ffc8008e203dd72fc80a628f29621970
 }
