@@ -17,5 +17,5 @@ fn main() {
     // ch2::primitives::literals();
     // ch2::primitives::tuples();
     // ch2::primitives::array_slice();
-    ch3::custom_types::struc();
+    ch3::custom_types::structures::struc_test();
 }

@@ -1,4 +1,4 @@
-mod structures {
+pub mod structures {
     #[derive(Debug)]
     //The 'a defines a lifetime
     struct Person<'a> {
